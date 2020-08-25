@@ -1,0 +1,35 @@
+version: "3.1"
+services:
+
+    mysql:
+      image: mysql:8.0
+      container_name: kalendapp-mysql
+      working_dir: /application
+      volumes:
+        - .:/application
+      environment:
+        - MYSQL_ROOT_PASSWORD=root
+        - MYSQL_DATABASE=kalendapp
+        - MYSQL_USER=kalendapp
+        - MYSQL_PASSWORD=kalendapp
+      ports:
+        - "8002:3306"
+
+    webserver:
+      image: nginx:alpine
+      container_name: kalendapp-webserver
+      working_dir: /application
+      volumes:
+          - .:/application
+          - ./docker/nginx/nginx.conf:/etc/nginx/conf.d/default.conf
+      ports:
+       - "8000:80"
+
+    php-fpm:
+      build: docker/php-fpm
+      container_name: kalendapp-php-fpm
+      working_dir: /application
+      volumes:
+        - .:/application
+        - ./docker/php-fpm/php-ini-overrides.ini:/etc/php/7.4/fpm/conf.d/99-overrides.ini
+
