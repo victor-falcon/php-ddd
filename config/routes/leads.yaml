@@ -1,0 +1,4 @@
+leads:
+  path: /leads
+  controller: App\Controller\Leads\LeadsPostController
+  methods: POST
