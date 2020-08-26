@@ -29,7 +29,8 @@
     },
     "autoload": {
         "psr-4": {
-            "App\\": "src/"
+            "App\\": "app/",
+            "Calend\\": "src/"
         }
     },
     "autoload-dev": {

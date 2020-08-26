@@ -1,10 +1,14 @@
- Feature:
-    In order to prove that we can create a Lead
-    As a user
+ Feature: Create new lead
+    In order to have leads
+    I want to create a new lead
 
-    Scenario: It receives expected response
-        When we make a POST request to "/leads"
-        Then the response content should be
+    Scenario: A valid non existing lead
+        Given I make a POST request to "/leads" with body
         """
-        {"lead":true}
+        {
+            "name": "Víctor Falcón",
+            "email": "victoor89@gmail.com"
+        }
         """
+        Then the response content should be empty
+        And the response status code should be 201
