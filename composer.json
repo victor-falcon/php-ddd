@@ -12,12 +12,13 @@
         "symfony/yaml": "5.1.*"
     },
     "require-dev": {
+        "ext-json": "*",
         "behat/behat": "^3.7",
         "friends-of-behat/mink": "^1.8",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/symfony-extension": "^2.0",
-        "ext-json": "*"
+        "phpunit/phpunit": "^9.3"
     },
     "config": {
         "optimize-autoloader": true,

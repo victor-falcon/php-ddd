@@ -1,3 +1,4 @@
+.idea
 
 ###> symfony/framework-bundle ###
 /.env.local
@@ -8,8 +9,12 @@
 /var/
 /vendor/
 ###< symfony/framework-bundle ###
-.idea
 
 ###> friends-of-behat/symfony-extension ###
-/behat.yml
+/behat.yml.dist
 ###< friends-of-behat/symfony-extension ###
+
+###> phpunit/phpunit ###
+/phpunit.xml
+.phpunit.result.cache
+###< phpunit/phpunit ###
