@@ -2,17 +2,18 @@
 
 namespace App\Tests\Unit\Leads\Command;
 
+use App\Tests\Unit\Leads\LeadTestCase;
 use Cal\Leads\Command\CreateLeadJob;
 use Cal\Leads\Command\CreateLeadJobHandler;
 use Cal\Leads\Domain\Lead;
-use Cal\Leads\Domain\LeadEmail;
-use Cal\Leads\Domain\LeadName;
+use Cal\Leads\Domain\ValueObject\LeadEmail;
+use Cal\Leads\Domain\ValueObject\LeadName;
+use Cal\Leads\Domain\ValueObject\LeadUuid;
 use Cal\Leads\Repository\LeadRepository;
 use PHPUnit\Framework\TestCase;
 
-class CreateLeadJobHandlerTest extends TestCase
+class CreateLeadJobHandlerTest extends LeadTestCase
 {
-    private \PHPUnit\Framework\MockObject\MockObject $repository;
     private CreateLeadJobHandler $handler;
 
     protected function setUp(): void
@@ -30,10 +31,7 @@ class CreateLeadJobHandlerTest extends TestCase
 
         $job = new CreateLeadJob($name, $email);
 
-        $this->repository->expects(self::once())->method('save')
-            ->with(
-                new Lead(new LeadName($name), new LeadEmail($email))
-            );
+        $this->assertItsSaved(new Lead(LeadUuid::random(), new LeadName($name), new LeadEmail($email)));
 
         ($this->handler)($job);
     }
