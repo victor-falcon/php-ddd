@@ -2,6 +2,7 @@
 
 namespace App\Tests\Unit\Leads\Command;
 
+use App\Tests\Shared\Domain\Mother\Lead\LeadMother;
 use App\Tests\Unit\Leads\LeadTestCase;
 use Cal\Leads\Command\CreateLeadJob;
 use Cal\Leads\Command\CreateLeadJobHandler;
@@ -31,7 +32,7 @@ class CreateLeadJobHandlerTest extends LeadTestCase
 
         $job = new CreateLeadJob($name, $email);
 
-        $this->assertItsSaved(new Lead(LeadUuid::random(), new LeadName($name), new LeadEmail($email)));
+        $this->shouldSave(LeadMother::with(['name' => $name, 'email' => $email]));
 
         ($this->handler)($job);
     }

@@ -3,15 +3,18 @@
 namespace App\Tests\Unit\Leads;
 
 use Cal\Leads\Domain\Lead;
+use Cal\Leads\Repository\LeadRepository;
+use PHPUnit\Framework\MockObject\MockObject;
 use PHPUnit\Framework\TestCase;
 
-class LeadTestCase extends TestCase
+abstract class LeadTestCase extends TestCase
 {
-    protected \PHPUnit\Framework\MockObject\MockObject $repository;
+    /** @var MockObject|LeadRepository */
+    protected MockObject $repository;
 
-    protected function assertItsSaved(Lead $lead)
+    protected function shouldSave(Lead $lead)
     {
-        $this->repository->expects($this->once())->method('save')
+        $this->repository->method('save')
             ->with($this->callback(function (Lead $a) use ($lead) {
                 return $this->areSimilar($a, $lead);
             }));
