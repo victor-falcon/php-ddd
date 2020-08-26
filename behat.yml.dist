@@ -1,8 +1,10 @@
 default:
     suites:
-        default:
+        leads:
+            paths:
+                - /application/tests/Features/Leads/
             contexts:
-                - App\Tests\Behat\DemoContext
+                - App\Tests\Shared\Infrastructure\Behat\ApplicationContext
 
     extensions:
         FriendsOfBehat\SymfonyExtension: null

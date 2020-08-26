@@ -2,7 +2,7 @@
     "type": "project",
     "license": "proprietary",
     "require": {
-        "php": ">=7.2.5",
+        "php": ">=7.4",
         "ext-ctype": "*",
         "ext-iconv": "*",
         "symfony/console": "5.1.*",
@@ -16,7 +16,8 @@
         "friends-of-behat/mink": "^1.8",
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
-        "friends-of-behat/symfony-extension": "^2.0"
+        "friends-of-behat/symfony-extension": "^2.0",
+        "ext-json": "*"
     },
     "config": {
         "optimize-autoloader": true,

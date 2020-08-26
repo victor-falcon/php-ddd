@@ -3,5 +3,5 @@ services:
         autowire: true
         autoconfigure: true
 
-    App\Tests\Behat\:
-        resource: '../tests/Behat/*'
+    App\Tests\Shared\Infrastructure\Behat\:
+        resource: '../tests/Shared/Infrastructure/Behat/*'
