@@ -6,7 +6,7 @@ use Ramsey\Uuid\Uuid as BaseUuid;
 
 class Uuid
 {
-    private string $uuid;
+    protected string $uuid;
 
     public function __construct(string $uuid)
     {

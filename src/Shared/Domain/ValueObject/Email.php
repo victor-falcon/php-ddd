@@ -4,7 +4,7 @@ namespace Cal\Shared\Domain\ValueObject;
 
 class Email
 {
-    private string $email;
+    protected string $email;
 
     public function __construct(string $email)
     {

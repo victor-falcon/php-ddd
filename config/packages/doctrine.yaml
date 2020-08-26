@@ -1,0 +1,17 @@
+doctrine:
+    dbal:
+        url: '%env(resolve:DATABASE_URL)%'
+        types:
+            lead_uuid: Cal\Leads\Infrastructure\Persistence\Doctrine\LeadUuidType
+
+    orm:
+        auto_generate_proxy_classes: true
+        naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
+        auto_mapping: true
+        mappings:
+            Leads:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/Leads/Infrastructure/Persistence/Doctrine'
+                prefix: 'Cal\Leads\Domain'
+                alias: Cal\Leads\Domain

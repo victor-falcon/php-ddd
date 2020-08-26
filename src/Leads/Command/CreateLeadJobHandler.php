@@ -14,9 +14,9 @@ final class CreateLeadJobHandler implements JobHandler
 {
     private LeadRepository $repository;
 
-    public function __construct(LeadRepository $repository)
+    public function __construct()
     {
-        $this->repository = $repository;
+        // $this->repository = $repository;
     }
 
     public function __invoke(CreateLeadJob $command): Lead

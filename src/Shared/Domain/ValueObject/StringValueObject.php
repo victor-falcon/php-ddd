@@ -4,7 +4,7 @@ namespace Cal\Shared\Domain\ValueObject;
 
 class StringValueObject
 {
-    private string $value;
+    protected string $value;
 
     public function __construct(string $value)
     {
