@@ -59,5 +59,4 @@ class DatabaseArranger implements DatabaseArrangerInterface
     public function afterTest(): void
     {
     }
-
 }

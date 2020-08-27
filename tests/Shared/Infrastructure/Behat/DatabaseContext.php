@@ -2,25 +2,37 @@
 
 namespace App\Tests\Shared\Infrastructure\Behat;
 
-use App\Tests\Shared\Infrastructure\Doctrine\DatabaseCleaner;
+use App\Kernel;
+use App\Tests\Shared\Infrastructure\Doctrine\DatabaseArranger;
 use Behat\Behat\Context\Context;
-use Behat\Behat\Hook\Scope\AfterScenarioScope;
-use Doctrine\ORM\EntityManagerInterface;
+use Behat\Testwork\Hook\Scope\AfterSuiteScope;
+use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
 
 class DatabaseContext implements Context
 {
-    private EntityManagerInterface $entityManager;
-    private DatabaseCleaner $databaseCleaner;
-
-    public function __construct(EntityManagerInterface $entityManager, DatabaseCleaner $databaseCleaner)
+    /** @BeforeSuite */
+    public static function beforeSuite(BeforeSuiteScope $scope)
     {
-        $this->entityManager = $entityManager;
-        $this->databaseCleaner = $databaseCleaner;
+        self::getContainer()->get(DatabaseArranger::class)->beforeClass();
+    }
+
+    /** @AfterSuite */
+    public static function afterSuite(AfterSuiteScope $scope)
+    {
+        self::getContainer()->get(DatabaseArranger::class)->afterClass();
     }
 
     /** @BeforeScenario */
-    private function clearData(): void
+    public function beforeScenario()
     {
-        $this->databaseCleaner->clear($this->entityManager);
+        self::getContainer()->get(DatabaseArranger::class)->beforeTest();
+    }
+
+    private static function getContainer()
+    {
+        $kernel = new Kernel('test', true);
+        $kernel->boot();
+
+        return $kernel->getContainer();
     }
 }
