@@ -4,6 +4,7 @@ namespace App\Controller\Leads;
 
 use Cal\Leads\Command\CreateLeadJob;
 use Cal\Leads\Command\CreateLeadJobHandler;
+use Cal\Leads\Domain\Exception\DuplicatedLeadException;
 use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
@@ -22,8 +23,11 @@ class LeadsPostController
         $name = $request->get('name');
         $email = $request->get('email');
 
-        ($this->handler)(new CreateLeadJob($name, $email));
-
-        return new Response(null, Response::HTTP_CREATED);
+        try {
+            ($this->handler)(new CreateLeadJob($name, $email));
+            return new Response(null, Response::HTTP_CREATED);
+        } catch (DuplicatedLeadException $e) {
+            return new Response(null, Response::HTTP_BAD_REQUEST);
+        }
     }
 }
