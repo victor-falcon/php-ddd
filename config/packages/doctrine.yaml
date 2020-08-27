@@ -3,6 +3,7 @@ doctrine:
         url: '%env(resolve:DATABASE_URL)%'
         types:
             lead_uuid: Cal\Leads\Infrastructure\Persistence\Doctrine\LeadUuidType
+            lead_name: Cal\Leads\Infrastructure\Persistence\Doctrine\LeadNameType
 
     orm:
         auto_generate_proxy_classes: true

@@ -2,8 +2,8 @@
 
 namespace Cal\Leads\Domain;
 
-use Cal\Shared\Domain\ValueObject\StringValueObject;
+use Cal\Shared\Domain\ValueObject\NullableStringValueObject;
 
-class LeadName extends StringValueObject
+class LeadName extends NullableStringValueObject
 {
 }

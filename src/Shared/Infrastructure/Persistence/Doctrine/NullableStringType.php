@@ -7,7 +7,7 @@ use Cal\Shared\Domain\ValueObject\Uuid;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
-abstract class UuidType extends StringType implements DoctrineCustomType
+abstract class NullableStringType extends StringType implements DoctrineCustomType
 {
     abstract protected function typeClassName(): string;
 
