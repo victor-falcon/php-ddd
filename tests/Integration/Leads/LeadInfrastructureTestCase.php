@@ -13,6 +13,6 @@ class LeadInfrastructureTestCase extends InfrastructureTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        $this->repository = parent::$container->get(DoctrineLeadRepository::class);
+        $this->repository = $this->get(DoctrineLeadRepository::class);
     }
 }
