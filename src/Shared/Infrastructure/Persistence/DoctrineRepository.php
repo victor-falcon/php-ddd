@@ -3,19 +3,23 @@
 namespace Cal\Shared\Infrastructure\Persistence;
 
 use Cal\Shared\Domain\Aggregate\AggregateRoot;
+use Cal\Shared\Domain\Repository\Exceptions\NotFoundException;
 use Doctrine\ORM\EntityManager;
+use Doctrine\ORM\EntityManagerInterface;
 use Doctrine\ORM\EntityRepository;
 
 abstract class DoctrineRepository
 {
-    private EntityManager $entityManager;
+    protected string $entityClass;
+    private EntityManagerInterface $entityManager;
 
-    public function __construct(EntityManager $entityManager)
+    public function __construct(EntityManagerInterface $entityManager, string $entityClass)
     {
         $this->entityManager = $entityManager;
+        $this->entityClass = $entityClass;
     }
 
-    protected function entityManager(): EntityManager
+    protected function entityManager(): EntityManagerInterface
     {
         return $this->entityManager;
     }
@@ -32,8 +36,17 @@ abstract class DoctrineRepository
         $this->entityManager()->flush($entity);
     }
 
-    protected function repository($entityClass): EntityRepository
+    protected function repository(): EntityRepository
     {
-        return $this->entityManager->getRepository($entityClass);
+        return $this->entityManager->getRepository($this->entityClass);
+    }
+
+    public function findOneBy(array $parameters, array $sortBy = null)
+    {
+        $entity = $this->repository()->findOneBy($parameters, $sortBy);
+
+        throw_if(null === $entity, new NotFoundException($this->entityClass));
+
+        return $entity;
     }
 }

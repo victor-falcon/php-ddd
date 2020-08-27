@@ -25,3 +25,5 @@ services:
     Cal\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
         tags:
           - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
+
+    Cal\Leads\Repository\LeadRepository: '@Cal\Leads\Infrastructure\Persistence\DoctrineLeadRepository'

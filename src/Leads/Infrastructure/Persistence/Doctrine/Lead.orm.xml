@@ -8,6 +8,7 @@
         <id name="id" type="lead_uuid" column="id" length="36"/>
         <field name="name" type="lead_name" column="name" nullable="true" />
         <embedded name="email" class="Cal\Leads\Domain\LeadEmail" use-column-prefix="false"/>
+        <embedded name="createdAt" class="Cal\Leads\Domain\LeadCreatedAt" use-column-prefix="false" />
     </entity>
 
 </doctrine-mapping>

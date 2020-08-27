@@ -9,12 +9,18 @@ class Lead extends AggregateRoot
     private LeadUuid $id;
     private LeadName $name;
     private LeadEmail $email;
+    private LeadCreatedAt $createdAt;
 
-    public function __construct(LeadUuid $id, LeadName $name, LeadEmail $email)
-    {
+    public function __construct(
+        LeadUuid $id,
+        LeadName $name,
+        LeadEmail $email,
+        LeadCreatedAt $createdAt = null
+    ) {
         $this->id = $id;
         $this->name = $name;
         $this->email = $email;
+        $this->createdAt = $createdAt ?? new LeadCreatedAt();
     }
 
     public function id(): LeadUuid

@@ -6,16 +6,16 @@ use Ramsey\Uuid\Uuid as BaseUuid;
 
 class Uuid
 {
-    protected string $uuid;
+    protected string $id;
 
-    public function __construct(string $uuid)
+    public function __construct(string $id)
     {
         throw_unless(
-            $this->isValidUuid($uuid),
-            new \InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', static::class, $uuid))
+            $this->isValid($id),
+            new \InvalidArgumentException(sprintf('<%s> does not allow the value <%s>.', static::class, $id))
         );
 
-        $this->uuid = $uuid;
+        $this->id = $id;
     }
 
     public static function generate(): string
@@ -25,11 +25,16 @@ class Uuid
 
     public function value(): string
     {
-        return $this->uuid;
+        return $this->id;
     }
 
-    private function isValidUuid(string $uuid): bool
+    private function isValid(string $id): bool
     {
-        return BaseUuid::isValid($uuid);
+        return BaseUuid::isValid($id);
+    }
+
+    public function __toString(): string
+    {
+        return $this->value();
     }
 }

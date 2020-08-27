@@ -3,7 +3,6 @@
 namespace Cal\Shared\Infrastructure\Persistence\Doctrine;
 
 use Cal\Shared\Domain\Utils;
-use Cal\Shared\Domain\ValueObject\Uuid;
 use Doctrine\DBAL\Platforms\AbstractPlatform;
 use Doctrine\DBAL\Types\StringType;
 
@@ -30,7 +29,6 @@ abstract class UuidType extends StringType implements DoctrineCustomType
         return new $className($value);
     }
 
-    /** @var Uuid $value */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         return $value->value();
