@@ -4,12 +4,13 @@ namespace App\Tests\Shared\Infrastructure\Behat;
 
 use App\Tests\Shared\Infrastructure\Mink\MinkHelper;
 use App\Tests\Shared\Infrastructure\Mink\MinkSessionRequestHelper;
+use Behat\Behat\Context\Context;
 use Behat\Gherkin\Node\PyStringNode;
 use Behat\Mink\Session;
 use Behat\MinkExtension\Context\RawMinkContext;
 use RuntimeException;
 
-final class ApplicationContext extends RawMinkContext
+final class ApplicationContext extends RawMinkContext implements Context
 {
     private MinkHelper $sessionHelper;
     private Session $minkSession;

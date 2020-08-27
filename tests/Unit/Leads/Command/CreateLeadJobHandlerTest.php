@@ -35,5 +35,7 @@ class CreateLeadJobHandlerTest extends LeadTestCase
         $this->shouldSave(LeadMother::with(['name' => $name, 'email' => $email]));
 
         ($this->handler)($job);
+
+        $this->assertTrue(true);
     }
 }

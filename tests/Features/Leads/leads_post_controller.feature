@@ -2,6 +2,7 @@
     In order to have leads
     I want to create a new lead
 
+     @database
     Scenario: A valid non existing lead
         Given I make a POST request to "/leads" with body
         """
@@ -13,6 +14,7 @@
         Then the response content should be empty
         And the response status code should be 201
 
+     @database
     Scenario: A valid non existing lead without name
         Given I make a POST request to "/leads" with body
         """
@@ -23,6 +25,7 @@
         Then the response content should be empty
         And the response status code should be 201
 
+     @database
     Scenario: Duplicated lead error
         Given I make a POST request to "/leads" with body
         """

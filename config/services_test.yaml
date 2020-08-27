@@ -5,3 +5,8 @@ services:
 
     App\Tests\Shared\Infrastructure\Behat\:
         resource: '../tests/Shared/Infrastructure/Behat/*'
+
+    App\Tests\Shared\:
+        resource: '../tests/Shared'
+
+    App\Tests\Shared\Infrastructure\Doctrine\DatabaseCleaner: '@App\Tests\Shared\Infrastructure\Doctrine\MySqlDatabaseCleaner'
