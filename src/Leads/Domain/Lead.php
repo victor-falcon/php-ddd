@@ -2,6 +2,10 @@
 
 namespace Cal\Leads\Domain;
 
+use Cal\Leads\Domain\ValueObject\LeadCreatedAt;
+use Cal\Leads\Domain\ValueObject\LeadEmail;
+use Cal\Leads\Domain\ValueObject\LeadName;
+use Cal\Leads\Domain\ValueObject\LeadUuid;
 use Cal\Shared\Domain\Aggregate\AggregateRoot;
 
 class Lead extends AggregateRoot

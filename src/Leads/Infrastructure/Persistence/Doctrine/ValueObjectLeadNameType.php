@@ -2,10 +2,10 @@
 
 namespace Cal\Leads\Infrastructure\Persistence\Doctrine;
 
-use Cal\Leads\Domain\LeadName;
+use Cal\Leads\Domain\ValueObject\LeadName;
 use Cal\Shared\Infrastructure\Persistence\Doctrine\NullableStringType;
 
-class LeadNameType extends NullableStringType
+class ValueObjectLeadNameType extends NullableStringType
 {
     protected function typeClassName(): string
     {

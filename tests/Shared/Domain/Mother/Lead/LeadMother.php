@@ -3,9 +3,9 @@
 namespace App\Tests\Shared\Domain\Mother\Lead;
 
 use Cal\Leads\Domain\Lead;
-use Cal\Leads\Domain\LeadEmail;
-use Cal\Leads\Domain\LeadName;
-use Cal\Leads\Domain\LeadUuid;
+use Cal\Leads\Domain\ValueObject\LeadEmail;
+use Cal\Leads\Domain\ValueObject\LeadName;
+use Cal\Leads\Domain\ValueObject\LeadUuid;
 use Faker\Factory;
 
 final class LeadMother

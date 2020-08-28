@@ -3,7 +3,7 @@
 namespace Cal\Leads\Repository;
 
 use Cal\Leads\Domain\Lead;
-use Cal\Leads\Domain\LeadEmail;
+use Cal\Leads\Domain\ValueObject\LeadEmail;
 
 interface LeadRepository
 {

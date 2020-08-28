@@ -4,7 +4,7 @@ namespace Cal\Leads\Infrastructure\Persistence;
 
 use Cal\Leads\Domain\Exception\DuplicatedLeadException;
 use Cal\Leads\Domain\Lead;
-use Cal\Leads\Domain\LeadEmail;
+use Cal\Leads\Domain\ValueObject\LeadEmail;
 use Cal\Leads\Repository\LeadRepository;
 use Cal\Shared\Domain\Repository\Exceptions\NotFoundException;
 use Cal\Shared\Infrastructure\Persistence\DoctrineRepository;

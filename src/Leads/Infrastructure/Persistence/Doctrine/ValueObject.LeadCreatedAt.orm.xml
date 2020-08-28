@@ -4,8 +4,8 @@
                   xsi:schemaLocation="http://doctrine-project.org/schemas/orm/doctrine-mapping
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
-    <embeddable name="Cal\Leads\Domain\LeadEmail">
-        <field name="email" type="string" column="email"/>
+    <embeddable name="Cal\Leads\Domain\ValueObject\LeadCreatedAt">
+        <field name="date" type="datetime" column="created_at"/>
     </embeddable>
 
 </doctrine-mapping>

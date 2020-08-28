@@ -2,8 +2,8 @@ doctrine:
     dbal:
         url: '%env(resolve:DATABASE_URL)%'
         types:
-            lead_uuid: Cal\Leads\Infrastructure\Persistence\Doctrine\LeadUuidType
-            lead_name: Cal\Leads\Infrastructure\Persistence\Doctrine\LeadNameType
+            lead_uuid: Cal\Leads\Infrastructure\Persistence\Doctrine\ValueObjectLeadUuidType
+            lead_name: Cal\Leads\Infrastructure\Persistence\Doctrine\ValueObjectLeadNameType
 
     orm:
         auto_generate_proxy_classes: true
