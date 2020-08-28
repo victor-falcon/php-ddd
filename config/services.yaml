@@ -5,6 +5,8 @@ services:
         autowire: true
         autoconfigure: true
 
+    # Services definition
+    # -------------------
     App\:
         resource: '../app/'
         exclude:
@@ -22,8 +24,29 @@ services:
         exclude:
             - '../src/Shared/Domain/helpers.php'
 
+    # Middleware
+    # ----------
     Cal\Shared\Infrastructure\Symfony\AddJsonBodyToRequestListener:
         tags:
           - { name: kernel.event_listener, event: kernel.request, method: onKernelRequest }
 
+    # Tag instances
+    # -------------
+    _instanceof:
+        Cal\Shared\Domain\Bus\Command\CommandHandler:
+            tags: ['cal.command_handler']
+
+        Cal\Shared\Domain\Bus\Query\QueryHandler:
+            tags: ['cal.query_handler']
+
+    # Configure params
+    # ----------------
+    Cal\Shared\Infrastructure\Bus\Command\InMemorySymfonyCommandBus:
+        arguments: [!tagged cal.command_handler]
+
+    Cal\Shared\Infrastructure\Bus\Command\InMemorySymfonyQueryBus:
+        arguments: [!tagged cal.query_handler]
+
+    # Interfaces definitions
+    # ----------------------
     Cal\Leads\Repository\LeadRepository: '@Cal\Leads\Infrastructure\Persistence\DoctrineLeadRepository'

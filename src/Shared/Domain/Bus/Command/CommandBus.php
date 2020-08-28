@@ -2,6 +2,7 @@
 
 namespace Cal\Shared\Domain\Bus\Command;
 
-interface JobHandler
+interface CommandBus
 {
+    public function dispatch(Command $job): void;
 }

@@ -4,8 +4,8 @@ namespace App\Tests\Unit\Leads\Command;
 
 use App\Tests\Shared\Domain\Mother\Lead\LeadMother;
 use App\Tests\Unit\Leads\LeadTestCase;
-use Cal\Leads\Command\CreateLeadJob;
-use Cal\Leads\Command\CreateLeadJobHandler;
+use Cal\Leads\Command\CreateLeadCommand;
+use Cal\Leads\Command\CreateLeadCommandHandler;
 use Cal\Leads\Domain\Lead;
 use Cal\Leads\Domain\ValueObject\LeadEmail;
 use Cal\Leads\Domain\ValueObject\LeadName;
@@ -13,16 +13,16 @@ use Cal\Leads\Domain\ValueObject\LeadUuid;
 use Cal\Leads\Repository\LeadRepository;
 use PHPUnit\Framework\TestCase;
 
-class CreateLeadJobHandlerTest extends LeadTestCase
+class CreateLeadCommandHandlerTest extends LeadTestCase
 {
-    private CreateLeadJobHandler $handler;
+    private CreateLeadCommandHandler $handler;
 
     protected function setUp(): void
     {
         parent::setUp();
         
         $this->repository = $this->createMock(LeadRepository::class);
-        $this->handler = new CreateLeadJobHandler($this->repository);
+        $this->handler = new CreateLeadCommandHandler($this->repository);
     }
 
     public function test_it_create_a_lead()
@@ -30,7 +30,7 @@ class CreateLeadJobHandlerTest extends LeadTestCase
         $name = 'any name';
         $email = 'any@email.com';
 
-        $job = new CreateLeadJob($name, $email);
+        $job = new CreateLeadCommand($name, $email);
 
         $this->shouldSave(LeadMother::with(['name' => $name, 'email' => $email]));
 

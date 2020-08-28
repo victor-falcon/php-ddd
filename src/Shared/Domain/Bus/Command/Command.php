@@ -2,6 +2,6 @@
 
 namespace Cal\Shared\Domain\Bus\Command;
 
-interface Job
+interface Command
 {
 }

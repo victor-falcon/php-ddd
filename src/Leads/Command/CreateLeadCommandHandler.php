@@ -7,9 +7,9 @@ use Cal\Leads\Domain\ValueObject\LeadEmail;
 use Cal\Leads\Domain\ValueObject\LeadName;
 use Cal\Leads\Domain\ValueObject\LeadUuid;
 use Cal\Leads\Repository\LeadRepository;
-use Cal\Shared\Domain\Bus\Command\JobHandler;
+use Cal\Shared\Domain\Bus\Command\CommandHandler;
 
-final class CreateLeadJobHandler implements JobHandler
+final class CreateLeadCommandHandler implements CommandHandler
 {
     private LeadRepository $repository;
 
@@ -18,7 +18,7 @@ final class CreateLeadJobHandler implements JobHandler
         $this->repository = $repository;
     }
 
-    public function __invoke(CreateLeadJob $command): Lead
+    public function __invoke(CreateLeadCommand $command): Lead
     {
         $lead = new Lead(
             LeadUuid::random(),
