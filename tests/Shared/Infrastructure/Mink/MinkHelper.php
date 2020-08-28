@@ -2,6 +2,7 @@
 
 namespace App\Tests\Shared\Infrastructure\Mink;
 
+use Behat\Mink\Driver\BrowserKitDriver;
 use Behat\Mink\Driver\DriverInterface;
 use Behat\Mink\Session;
 use Symfony\Component\BrowserKit\AbstractBrowser;
@@ -16,7 +17,7 @@ final class MinkHelper
         $this->session = $session;
     }
 
-    public function sendRequest($method, $url, array $optionalParams = []): Crawler
+    public function sendRequest(string $method, string $url, array $optionalParams = []): Crawler
     {
         $defaultOptionalParams = [
             'parameters'    => [],
@@ -70,9 +71,11 @@ final class MinkHelper
         return $this->session;
     }
 
-    private function getDriver(): DriverInterface
+    private function getDriver(): BrowserKitDriver
     {
-        return $this->getSession()->getDriver();
+        /** @var BrowserKitDriver $driver */
+        $driver = $this->getSession()->getDriver();
+        return $driver;
     }
 
     private function getClient(): AbstractBrowser

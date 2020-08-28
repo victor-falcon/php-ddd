@@ -4,7 +4,7 @@ namespace Cal\Leads\Domain\ValueObject;
 
 use Cal\Shared\Domain\ValueObject\Uuid;
 
-class LeadUuid extends Uuid
+final class LeadUuid extends Uuid
 {
     public static function random(): self
     {

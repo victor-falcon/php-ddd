@@ -4,6 +4,6 @@ namespace Cal\Leads\Domain\ValueObject;
 
 use Cal\Shared\Domain\ValueObject\Email;
 
-class LeadEmail extends Email
+final class LeadEmail extends Email
 {
 }

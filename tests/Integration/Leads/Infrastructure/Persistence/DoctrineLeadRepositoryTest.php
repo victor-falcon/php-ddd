@@ -8,21 +8,21 @@ use Cal\Leads\Domain\Exception\DuplicatedLeadException;
 
 class DoctrineLeadRepositoryTest extends LeadInfrastructureTestCase
 {
-    public function test_save()
+    public function test_save(): void
     {
         $lead = LeadMother::random();
         $this->repository->save($lead);
         $this->assertTrue(true);
     }
 
-    public function test_save_with_null_name()
+    public function test_save_with_null_name(): void
     {
         $lead = LeadMother::with(['name' => null, 'email' => 'any@email.com']);
         $this->repository->save($lead);
         $this->assertTrue(true);
     }
 
-    public function test_that_email_its_unique()
+    public function test_that_email_its_unique(): void
     {
         $lead = LeadMother::random();
         $this->repository->save($lead);

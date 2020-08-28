@@ -9,12 +9,12 @@ use PHPUnit\Framework\TestCase;
 
 abstract class LeadTestCase extends TestCase
 {
-    /** @var MockObject|LeadRepository */
-    protected MockObject $repository;
+    /** @var MockObject */
+    protected $repository;
 
-    protected function shouldSave(Lead $lead)
+    protected function shouldSave(Lead $lead): void
     {
-        $this->repository->method('save')
+        $this->repository->expects(self::any())->method('save')
             ->with($this->callback(function (Lead $a) use ($lead) {
                 return $this->areSimilar($a, $lead);
             }));

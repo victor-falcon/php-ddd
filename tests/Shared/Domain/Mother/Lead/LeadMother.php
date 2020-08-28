@@ -19,7 +19,7 @@ final class LeadMother
         );
     }
 
-    public static function random()
+    public static function random(): Lead
     {
         $faker = Factory::create();
 

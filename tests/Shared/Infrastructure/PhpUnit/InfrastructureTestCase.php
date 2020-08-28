@@ -25,7 +25,7 @@ abstract class InfrastructureTestCase extends KernelTestCase
        self::databaseArranger()->afterClass();
     }
 
-    public function get(string $class)
+    public function get(string $class): ?object
     {
         self::bootKernel(['environment' => 'test']);
         return self::$container->get($class);
@@ -34,6 +34,10 @@ abstract class InfrastructureTestCase extends KernelTestCase
     protected static function databaseArranger(): DatabaseArrangerInterface
     {
         self::bootKernel(['environment' => 'test']);
-        return self::$container->get(DatabaseArrangerInterface::class);
+
+        /** @var DatabaseArrangerInterface $database */
+        $database = self::$container->get(DatabaseArrangerInterface::class);
+
+        return $database;
     }
 }

@@ -25,7 +25,7 @@ class CreateLeadCommandHandlerTest extends LeadTestCase
         $this->handler = new CreateLeadCommandHandler($this->repository);
     }
 
-    public function test_it_create_a_lead()
+    public function test_it_create_a_lead(): void
     {
         $name = 'any name';
         $email = 'any@email.com';

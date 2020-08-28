@@ -34,7 +34,7 @@ final class ApplicationContext extends RawMinkContext implements Context
     /**
      * @Given I make a :method request to :path with body
      */
-    public function iMakeARequestToWithBody(string $path, string $method, PyStringNode $body)
+    public function iMakeARequestToWithBody(string $path, string $method, PyStringNode $body): void
     {
         $this->request->sendRequestWithPyStringNode($method, $this->locatePath($path), $body);
     }
@@ -57,7 +57,7 @@ final class ApplicationContext extends RawMinkContext implements Context
     /**
      * @Then the response content should be empty
      */
-    public function theResponseContentShouldBeEmpty()
+    public function theResponseContentShouldBeEmpty(): void
     {
         $actual = trim($this->sessionHelper->getResponse());
 
@@ -71,7 +71,7 @@ final class ApplicationContext extends RawMinkContext implements Context
     /**
      * @Then the response status code should be :code
      */
-    public function theResponseStatusCodeShouldBe(int $code)
+    public function theResponseStatusCodeShouldBe(int $code): void
     {
         if ($code !== $this->minkSession->getStatusCode()) {
             throw new RuntimeException(
@@ -84,8 +84,8 @@ final class ApplicationContext extends RawMinkContext implements Context
         }
     }
 
-    private function sanitizeJson(string $json)
+    private function sanitizeJson(string $json): ?string
     {
-        return json_encode(json_decode(trim($json), true));
+        return json_encode(json_decode(trim($json), true)) ?: null;
     }
 }

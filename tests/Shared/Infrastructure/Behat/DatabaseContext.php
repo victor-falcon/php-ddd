@@ -7,28 +7,37 @@ use App\Tests\Shared\Infrastructure\Doctrine\DatabaseArranger;
 use Behat\Behat\Context\Context;
 use Behat\Testwork\Hook\Scope\AfterSuiteScope;
 use Behat\Testwork\Hook\Scope\BeforeSuiteScope;
+use Symfony\Component\DependencyInjection\ContainerInterface;
 
 class DatabaseContext implements Context
 {
     /** @BeforeSuite */
-    public static function beforeSuite(BeforeSuiteScope $scope)
+    public static function beforeSuite(BeforeSuiteScope $scope): void
     {
-        self::getContainer()->get(DatabaseArranger::class)->beforeClass();
+        self::getDatabaseArranger()->beforeClass();
     }
 
     /** @AfterSuite */
-    public static function afterSuite(AfterSuiteScope $scope)
+    public static function afterSuite(AfterSuiteScope $scope): void
     {
-        self::getContainer()->get(DatabaseArranger::class)->afterClass();
+        self::getDatabaseArranger()->afterClass();
+    }
+
+    protected static function getDatabaseArranger(): DatabaseArranger
+    {
+        /** @var DatabaseArranger $databaseArranger */
+        $databaseArranger = self::getContainer()->get(DatabaseArranger::class);
+
+        return $databaseArranger;
     }
 
     /** @BeforeScenario */
-    public function beforeScenario()
+    public function beforeScenario(): void
     {
-        self::getContainer()->get(DatabaseArranger::class)->beforeTest();
+        self::getDatabaseArranger()->beforeTest();
     }
 
-    private static function getContainer()
+    private static function getContainer(): ContainerInterface
     {
         $kernel = new Kernel('test', true);
         $kernel->boot();

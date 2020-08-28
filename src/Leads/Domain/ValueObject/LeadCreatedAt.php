@@ -5,7 +5,7 @@ namespace Cal\Leads\Domain\ValueObject;
 use Cal\Shared\Domain\ValueObject\CreatedAt;
 use Carbon\Carbon;
 
-class LeadCreatedAt extends CreatedAt
+final class LeadCreatedAt extends CreatedAt
 {
     protected \DateTime $date;
 

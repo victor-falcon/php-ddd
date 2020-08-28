@@ -8,7 +8,7 @@ use Cal\Leads\Domain\ValueObject\LeadName;
 use Cal\Leads\Domain\ValueObject\LeadUuid;
 use Cal\Shared\Domain\Aggregate\AggregateRoot;
 
-class Lead extends AggregateRoot
+final class Lead extends AggregateRoot
 {
     private LeadUuid $id;
     private LeadName $name;

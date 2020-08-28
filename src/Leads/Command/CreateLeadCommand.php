@@ -4,7 +4,7 @@ namespace Cal\Leads\Command;
 
 use Cal\Shared\Domain\Bus\Command\Command;
 
-class CreateLeadCommand implements Command
+final class CreateLeadCommand implements Command
 {
     private ?string $name;
     private string $email;
