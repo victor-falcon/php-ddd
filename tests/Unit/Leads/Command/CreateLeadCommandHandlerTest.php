@@ -4,16 +4,13 @@ declare(strict_types=1);
 
 namespace App\Tests\Unit\Leads\Command;
 
+use App\Tests\Shared\Domain\Mother\Lead\LeadCreatedEventMother;
 use App\Tests\Shared\Domain\Mother\Lead\LeadMother;
 use App\Tests\Unit\Leads\LeadTestCase;
 use Cal\Leads\Command\CreateLeadCommand;
 use Cal\Leads\Command\CreateLeadCommandHandler;
-use Cal\Leads\Domain\Lead;
-use Cal\Leads\Domain\ValueObject\LeadEmail;
-use Cal\Leads\Domain\ValueObject\LeadName;
-use Cal\Leads\Domain\ValueObject\LeadUuid;
-use Cal\Leads\Repository\LeadRepository;
-use PHPUnit\Framework\TestCase;
+use Carbon\Carbon;
+use Faker\Factory;
 
 class CreateLeadCommandHandlerTest extends LeadTestCase
 {
@@ -22,9 +19,11 @@ class CreateLeadCommandHandlerTest extends LeadTestCase
     protected function setUp(): void
     {
         parent::setUp();
-
-        $this->repository = $this->createMock(LeadRepository::class);
-        $this->handler = new CreateLeadCommandHandler($this->repository);
+        Carbon::setTestNow(Carbon::now());
+        $this->handler = new CreateLeadCommandHandler(
+            $this->repository(),
+            $this->eventBus()
+        );
     }
 
     public function test_it_create_a_lead(): void
@@ -32,12 +31,14 @@ class CreateLeadCommandHandlerTest extends LeadTestCase
         $name = 'any name';
         $email = 'any@email.com';
 
-        $job = new CreateLeadCommand($name, $email);
+        $lead = LeadMother::with(['name' => $name, 'email' => $email]);
+        $event = LeadCreatedEventMother::fromLead($lead);
 
-        $this->shouldSave(LeadMother::with(['name' => $name, 'email' => $email]));
+        $this->shouldSave($lead);
+        $this->shouldPublishEvent($event);
 
-        ($this->handler)($job);
+        ($this->handler)(new CreateLeadCommand($name, $email));
 
-        $this->assertTrue(true);
+        $this->assertTrue(true); // No exception thrown
     }
 }

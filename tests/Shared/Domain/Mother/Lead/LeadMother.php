@@ -14,8 +14,10 @@ final class LeadMother
 {
     public static function with(array $params): Lead
     {
+        $faker = Factory::create();
+
         return new Lead(
-            isset($params['uuid']) ? new LeadUuid($params['uuid']) : LeadUuid::random(),
+            isset($params['uuid']) ? new LeadUuid($params['uuid']) : new LeadUuid($faker->uuid),
             new LeadName($params['name'] ?? null),
             new LeadEmail($params['email'])
         );
@@ -26,7 +28,7 @@ final class LeadMother
         $faker = Factory::create();
 
         return new Lead(
-            LeadUuid::random(),
+            new LeadUuid($faker->uuid),
             new LeadName($faker->name),
             new LeadEmail($faker->email)
         );

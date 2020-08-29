@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace App\Tests\Shared\Infrastructure\Mink;
 
 use Behat\Mink\Driver\BrowserKitDriver;
-use Behat\Mink\Driver\DriverInterface;
 use Behat\Mink\Session;
 use Symfony\Component\BrowserKit\AbstractBrowser;
 use Symfony\Component\DomCrawler\Crawler;

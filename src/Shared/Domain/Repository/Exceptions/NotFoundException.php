@@ -4,8 +4,6 @@ declare(strict_types=1);
 
 namespace Cal\Shared\Domain\Repository\Exceptions;
 
-use Throwable;
-
 class NotFoundException extends \Exception
 {
     public function __construct(string $class)

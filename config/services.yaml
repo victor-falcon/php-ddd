@@ -39,13 +39,19 @@ services:
         Cal\Shared\Domain\Bus\Query\QueryHandler:
             tags: ['cal.query_handler']
 
+        Cal\Shared\Domain\Bus\Event\EventSubscriber:
+            tags: [ 'cal.event_subscriber' ]
+
     # Configure params
     # ----------------
     Cal\Shared\Infrastructure\Bus\Command\InMemorySymfonyCommandBus:
         arguments: [!tagged cal.command_handler]
 
-    Cal\Shared\Infrastructure\Bus\Command\InMemorySymfonyQueryBus:
+    Cal\Shared\Infrastructure\Bus\Query\InMemorySymfonyQueryBus:
         arguments: [!tagged cal.query_handler]
+
+    Cal\Shared\Infrastructure\Bus\Event\InMemorySymfonyEventBus:
+        arguments: [ !tagged cal.event_subscriber ]
 
     # Interfaces definitions
     # ----------------------

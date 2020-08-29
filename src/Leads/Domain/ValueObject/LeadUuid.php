@@ -8,8 +8,4 @@ use Cal\Shared\Domain\ValueObject\Uuid;
 
 final class LeadUuid extends Uuid
 {
-    public static function random(): self
-    {
-        return new self(self::generate());
-    }
 }

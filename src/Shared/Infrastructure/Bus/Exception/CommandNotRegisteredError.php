@@ -5,7 +5,6 @@ declare(strict_types=1);
 namespace Cal\Shared\Infrastructure\Bus\Exception;
 
 use Cal\Shared\Domain\Bus\Command\Command;
-use Throwable;
 
 class CommandNotRegisteredError extends \Exception
 {

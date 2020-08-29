@@ -5,10 +5,8 @@ declare(strict_types=1);
 namespace App\Controller\Leads;
 
 use Cal\Leads\Command\CreateLeadCommand;
-use Cal\Leads\Command\CreateLeadCommandHandler;
 use Cal\Leads\Domain\Exception\DuplicatedLeadException;
 use Cal\Shared\Domain\Bus\Command\CommandBus;
-use Symfony\Component\HttpFoundation\JsonResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
