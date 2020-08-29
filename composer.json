@@ -27,6 +27,7 @@
         "friends-of-behat/mink-browserkit-driver": "^1.4",
         "friends-of-behat/mink-extension": "^2.4",
         "friends-of-behat/symfony-extension": "^2.0",
+        "friendsofphp/php-cs-fixer": "^2.16",
         "phpstan/phpstan": "^0.12.40",
         "phpunit/phpunit": "^9.3"
     },

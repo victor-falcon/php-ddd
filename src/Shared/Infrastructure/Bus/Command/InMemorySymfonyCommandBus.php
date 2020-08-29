@@ -1,9 +1,11 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Cal\Shared\Infrastructure\Bus\Command;
 
-use Cal\Shared\Domain\Bus\Command\CommandBus;
 use Cal\Shared\Domain\Bus\Command\Command;
+use Cal\Shared\Domain\Bus\Command\CommandBus;
 use Cal\Shared\Infrastructure\Bus\Exception\CommandNotRegisteredError;
 use Cal\Shared\Infrastructure\Bus\GetHandlersByFirstParameter;
 use Symfony\Component\Messenger\Exception\HandlerFailedException;
@@ -21,7 +23,7 @@ class InMemorySymfonyCommandBus implements CommandBus
         $this->bus = new MessageBus([
             new HandleMessageMiddleware(
                 new HandlersLocator(GetHandlersByFirstParameter::forCallables($commandHandlers))
-            )
+            ),
         ]);
     }
 

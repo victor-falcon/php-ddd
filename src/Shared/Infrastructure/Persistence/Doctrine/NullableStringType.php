@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Cal\Shared\Infrastructure\Persistence\Doctrine;
 
@@ -30,7 +32,7 @@ abstract class NullableStringType extends StringType implements DoctrineCustomTy
         return new $className($value);
     }
 
-    /** @var Uuid $value */
+    /** @var Uuid */
     public function convertToDatabaseValue($value, AbstractPlatform $platform)
     {
         return $value->value();

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests\Unit\Leads\Command;
 
@@ -20,7 +22,7 @@ class CreateLeadCommandHandlerTest extends LeadTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        
+
         $this->repository = $this->createMock(LeadRepository::class);
         $this->handler = new CreateLeadCommandHandler($this->repository);
     }

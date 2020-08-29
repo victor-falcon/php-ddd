@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests\Shared\Infrastructure\Mink;
 
@@ -75,6 +77,7 @@ final class MinkHelper
     {
         /** @var BrowserKitDriver $driver */
         $driver = $this->getSession()->getDriver();
+
         return $driver;
     }
 

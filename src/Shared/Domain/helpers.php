@@ -1,5 +1,7 @@
 <?php
 
+declare(strict_types=1);
+
 if (! function_exists('throw_if')) {
     /**
      * Throw the given exception if the given condition is true.

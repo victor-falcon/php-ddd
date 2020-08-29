@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Cal\Shared\Infrastructure\Symfony;
 
@@ -19,7 +21,7 @@ final class AddJsonBodyToRequestListener
         }
 
         $jsonData = json_decode($requestContents, true);
-        if (!$jsonData) {
+        if (! $jsonData) {
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Invalid json data');
         }
 
@@ -28,7 +30,7 @@ final class AddJsonBodyToRequestListener
         foreach ($jsonData as $key => $value) {
             $jsonDataLowerCase[preg_replace_callback(
                 '/_(.)/',
-                static fn($matches) => strtoupper($matches[1]),
+                static fn ($matches) => strtoupper($matches[1]),
                 $key
             )] = $value;
         }

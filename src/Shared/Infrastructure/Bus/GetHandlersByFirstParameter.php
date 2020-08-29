@@ -1,11 +1,13 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Cal\Shared\Infrastructure\Bus;
 
-use ReflectionClass;
-use ReflectionMethod;
 use function Lambdish\Phunctional\map;
 use function Lambdish\Phunctional\reindex;
+use ReflectionClass;
+use ReflectionMethod;
 
 class GetHandlersByFirstParameter
 {
@@ -14,20 +16,20 @@ class GetHandlersByFirstParameter
         return map(self::unFlatten(), reindex(self::classExtractor(new self()), $callables));
     }
 
-    private static function classExtractor(GetHandlersByFirstParameter $parameterExtractor): callable
+    private static function classExtractor(self $parameterExtractor): callable
     {
-        return static fn(callable $handler): string => $parameterExtractor->extract($handler);
+        return static fn (callable $handler): string => $parameterExtractor->extract($handler);
     }
 
     private static function unFlatten(): callable
     {
-        return static fn($value) => [$value];
+        return static fn ($value) => [$value];
     }
 
     public function extract($class): ?string
     {
         $reflector = new ReflectionClass($class);
-        $method    = $reflector->getMethod('__invoke');
+        $method = $reflector->getMethod('__invoke');
 
         if ($this->hasOnlyOneParameter($method)) {
             return $this->firstParameterClassFrom($method);

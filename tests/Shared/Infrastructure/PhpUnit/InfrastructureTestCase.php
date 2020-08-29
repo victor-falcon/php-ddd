@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests\Shared\Infrastructure\PhpUnit;
 
@@ -8,26 +10,27 @@ use Symfony\Bundle\FrameworkBundle\Test\KernelTestCase;
 abstract class InfrastructureTestCase extends KernelTestCase
 {
     public static function setUpBeforeClass(): void
-   {
-       parent::setUpBeforeClass();
-       self::databaseArranger()->beforeClass();
-   }
+    {
+        parent::setUpBeforeClass();
+        self::databaseArranger()->beforeClass();
+    }
 
     protected function setUp(): void
     {
         parent::setUp();
-       self::databaseArranger()->beforeTest();
+        self::databaseArranger()->beforeTest();
     }
 
     public static function tearDownAfterClass(): void
     {
         parent::tearDownAfterClass();
-       self::databaseArranger()->afterClass();
+        self::databaseArranger()->afterClass();
     }
 
     public function get(string $class): ?object
     {
         self::bootKernel(['environment' => 'test']);
+
         return self::$container->get($class);
     }
 

@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace Cal\Shared\Infrastructure\Bus\Query;
 
@@ -22,7 +24,7 @@ class InMemorySymfonyQueryBus implements QueryBus
         $this->bus = new MessageBus([
             new HandleMessageMiddleware(
                 new HandlersLocator(GetHandlersByFirstParameter::forCallables($queryHandlers))
-            )
+            ),
         ]);
     }
 

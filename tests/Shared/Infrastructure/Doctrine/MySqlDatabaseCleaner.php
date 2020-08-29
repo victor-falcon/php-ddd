@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Tests\Shared\Infrastructure\Doctrine;
 
@@ -16,7 +18,7 @@ final class MySqlDatabaseCleaner implements DatabaseCleaner
         $tables = $this->tables($connection);
         $truncateTablesSql = $this->truncateDatabaseSql($tables);
 
-        $connection->exec("TRUNCATE TABLE leads");
+        $connection->exec('TRUNCATE TABLE leads');
     }
 
     private function truncateDatabaseSql(array $tables): string
@@ -28,7 +30,7 @@ final class MySqlDatabaseCleaner implements DatabaseCleaner
 
     private function truncateTableSql(): callable
     {
-        return fn(array $table): string => sprintf('TRUNCATE TABLE `%s`;', first($table));
+        return fn (array $table): string => sprintf('TRUNCATE TABLE `%s`;', first($table));
     }
 
     private function tables(Connection $connection): array

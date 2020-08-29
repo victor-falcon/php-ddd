@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace App\Controller\Leads;
 
@@ -26,6 +28,7 @@ class LeadsPostController
 
         try {
             $this->commandBus->dispatch(new CreateLeadCommand($name, $email));
+
             return new Response(null, Response::HTTP_CREATED);
         } catch (DuplicatedLeadException $e) {
             return new Response(null, Response::HTTP_BAD_REQUEST);
