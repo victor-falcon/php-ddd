@@ -18,7 +18,7 @@ final class MySqlDatabaseCleaner implements DatabaseCleaner
         $tables = $this->tables($connection);
         $truncateTablesSql = $this->truncateDatabaseSql($tables);
 
-        $connection->exec('TRUNCATE TABLE leads');
+        $connection->exec($truncateTablesSql);
     }
 
     private function truncateDatabaseSql(array $tables): string
