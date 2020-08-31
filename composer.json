@@ -1,4 +1,6 @@
 {
+    "name": "calendgo/api",
+    "description": "API to provide data to our web app.",
     "type": "project",
     "license": "proprietary",
     "require": {
