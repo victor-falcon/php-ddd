@@ -1,0 +1,19 @@
+default:
+    suites:
+        leads:
+            paths:
+                - ./tests/Features/Leads/
+            contexts:
+                - App\Tests\Shared\Infrastructure\Behat\DatabaseContext
+                - App\Tests\Shared\Infrastructure\Behat\ApplicationContext
+
+    extensions:
+        FriendsOfBehat\SymfonyExtension:
+          kernel:
+            class: App\Kernel
+          bootstrap: ./tests/bootstrap.php
+        Behat\MinkExtension:
+          sessions:
+            symfony:
+              symfony: ~
+          base_url: ''

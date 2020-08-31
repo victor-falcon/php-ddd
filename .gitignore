@@ -10,10 +10,6 @@
 /vendor/
 ###< symfony/framework-bundle ###
 
-###> friends-of-behat/symfony-extension ###
-/behat.yml.dist
-###< friends-of-behat/symfony-extension ###
-
 ###> phpunit/phpunit ###
 /phpunit.xml
 .phpunit.result.cache
