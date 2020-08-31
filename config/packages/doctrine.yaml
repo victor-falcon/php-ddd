@@ -1,6 +1,11 @@
 doctrine:
     dbal:
-        url: '%env(resolve:DATABASE_URL)%'
+        dbname: '%env(DATABASE_DBNAME)%'
+        host: '%env(DATABASE_HOST)%'
+        port: '%env(DATABASE_PORT)%'
+        user: '%env(DATABASE_USER)%'
+        password: '%env(DATABASE_PASSWORD)%'
+        driver: '%env(DATABASE_DRIVER)%'
         types:
             lead_uuid: Cal\Leads\Infrastructure\Persistence\Doctrine\ValueObjectLeadUuidType
             lead_name: Cal\Leads\Infrastructure\Persistence\Doctrine\ValueObjectLeadNameType

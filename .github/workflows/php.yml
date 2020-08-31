@@ -53,6 +53,8 @@ jobs:
 
     - name: Integration testing
       run: vendor/bin/phpunit --testsuite Integration
+      env:
+        DATABASE_HOST: localhost
 
     - name: Feature test
       run: vendor/bin/behat

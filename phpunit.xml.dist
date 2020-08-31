@@ -9,7 +9,6 @@
   <php>
     <ini name="error_reporting" value="-1"/>
     <server name="APP_ENV" value="test" force="true"/>
-    <server name="DATABASE_URL" value="mysql://root:root@mysql:3306/kalendapp_test?serverVersion=5.7"/>
     <server name="SHELL_VERBOSITY" value="-1"/>
   </php>
   <testsuites>
