@@ -9,7 +9,7 @@ use Cal\Leads\Domain\Lead;
 
 class LeadCreatedEventMother
 {
-    static public function fromLead(Lead $lead): LeadCreatedEvent
+    public static function fromLead(Lead $lead): LeadCreatedEvent
     {
         return new LeadCreatedEvent(
             $lead

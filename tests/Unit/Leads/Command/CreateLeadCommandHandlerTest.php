@@ -10,7 +10,6 @@ use App\Tests\Unit\Leads\LeadTestCase;
 use Cal\Leads\Command\CreateLeadCommand;
 use Cal\Leads\Command\CreateLeadCommandHandler;
 use Carbon\Carbon;
-use Faker\Factory;
 
 class CreateLeadCommandHandlerTest extends LeadTestCase
 {
