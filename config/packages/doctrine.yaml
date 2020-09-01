@@ -9,15 +9,22 @@ doctrine:
         types:
             lead_uuid: Cal\Leads\Infrastructure\Persistence\Doctrine\ValueObjectLeadUuidType
             lead_name: Cal\Leads\Infrastructure\Persistence\Doctrine\ValueObjectLeadNameType
+            event_log_uuid: Cal\EventLogger\Infrastructure\Persistence\Doctrine\ValueObjectEventLogUuidType
 
     orm:
         auto_generate_proxy_classes: true
         naming_strategy: doctrine.orm.naming_strategy.underscore_number_aware
         auto_mapping: true
         mappings:
-            Leads:
+            Lead:
                 is_bundle: false
                 type: xml
                 dir: '%kernel.project_dir%/src/Leads/Infrastructure/Persistence/Doctrine'
                 prefix: 'Cal\Leads\Domain'
                 alias: Cal\Leads\Domain
+            EventLogger:
+                is_bundle: false
+                type: xml
+                dir: '%kernel.project_dir%/src/EventLogger/Infrastructure/Persistence/Doctrine'
+                prefix: 'Cal\EventLogger\Domain'
+                alias: Cal\EventLogger\Domain

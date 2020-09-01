@@ -1,4 +1,6 @@
-<?php declare(strict_types=1);
+<?php
+
+declare(strict_types=1);
 
 namespace DoctrineMigrations;
 
@@ -7,12 +9,12 @@ use Doctrine\Migrations\AbstractMigration;
 
 final class Version20200827111248 extends AbstractMigration
 {
-    public function getDescription() : string
+    public function getDescription(): string
     {
         return 'Create leads table';
     }
 
-    public function up(Schema $schema) : void
+    public function up(Schema $schema): void
     {
         $this->addSql('CREATE TABLE leads (
             id VARCHAR(36) NOT NULL, 
