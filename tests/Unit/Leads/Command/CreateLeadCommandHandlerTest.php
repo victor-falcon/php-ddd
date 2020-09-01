@@ -9,7 +9,6 @@ use App\Tests\Shared\Domain\Mother\Lead\LeadMother;
 use App\Tests\Unit\Leads\LeadTestCase;
 use Cal\Leads\Command\CreateLeadCommand;
 use Cal\Leads\Command\CreateLeadCommandHandler;
-use Carbon\Carbon;
 
 class CreateLeadCommandHandlerTest extends LeadTestCase
 {

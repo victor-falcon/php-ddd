@@ -27,7 +27,7 @@ class JsonValue
 
     private function throwIsInvalid(string $value)
     {
-        $valid = (json_decode($value , true) == NULL) ? false : true ;
+        $valid = (json_decode($value, true) == null) ? false : true;
 
         if (false === $valid) {
             throw new InvalidJsonException($value);

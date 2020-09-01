@@ -7,7 +7,6 @@ namespace App\Tests\Unit\Leads\Domain;
 use App\Tests\Shared\Domain\Mother\Lead\LeadMother;
 use App\Tests\Unit\Leads\LeadTestCase;
 use Cal\Leads\Domain\Lead;
-use PHPUnit\Framework\TestCase;
 
 class LeadTest extends LeadTestCase
 {

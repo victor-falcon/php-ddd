@@ -7,7 +7,6 @@ namespace App\Tests\Unit\EventLogger\Domain;
 use App\Tests\Shared\Domain\Mother\EventLogger\EventLogMother;
 use App\Tests\Unit\EventLogger\EventLoggerTestCase;
 use Cal\EventLogger\Domain\EventLog;
-use Carbon\Carbon;
 
 class EventLogTest extends EventLoggerTestCase
 {

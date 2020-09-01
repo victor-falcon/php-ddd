@@ -11,7 +11,6 @@ use Cal\Leads\Domain\Lead;
 use Cal\Shared\Domain\Utils;
 use Carbon\Carbon;
 use Faker\Factory;
-use PHPUnit\Framework\TestCase;
 
 class LeadCreatedEventTest extends LeadTestCase
 {
@@ -53,6 +52,7 @@ class LeadCreatedEventTest extends LeadTestCase
     private function getEvent(Lead $lead = null): LeadCreatedEvent
     {
         $faker = Factory::create();
+
         return new LeadCreatedEvent(
             $lead ?? LeadMother::random(),
             $faker->uuid,

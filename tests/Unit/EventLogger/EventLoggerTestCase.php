@@ -40,8 +40,7 @@ class EventLoggerTestCase extends TestCase
 
     protected function areSimilar(array $a, array $b): bool
     {
-        return $a['id'] === $b['id']
-            && $a['aggregateId'] === $b['aggregateId']
+        return $a['aggregateId'] === $b['aggregateId']
             && $a['name'] === $b['name']
             && $a['body'] === $b['body'];
     }
