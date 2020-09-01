@@ -78,7 +78,7 @@ final class Lead extends AggregateRoot
             new LeadUuid($parameters['id']),
             new LeadName($parameters['name']),
             new LeadEmail($parameters['email']),
-            new LeadCreatedAt(Utils::stringToDate($parameters['createdAt'])),
+            LeadCreatedAt::formString($parameters['createdAt'])
         );
     }
 }
