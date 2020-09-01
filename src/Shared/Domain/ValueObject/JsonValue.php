@@ -10,10 +10,9 @@ class JsonValue
 {
     protected string $value;
 
-    public function __construct(string $value)
+    public function __construct(array $value)
     {
-        $this->throwIsInvalid($value);
-        $this->value = $value;
+        $this->value = json_encode($value);
     }
 
     public function value(): string

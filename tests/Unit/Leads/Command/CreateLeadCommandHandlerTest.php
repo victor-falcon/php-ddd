@@ -18,7 +18,6 @@ class CreateLeadCommandHandlerTest extends LeadTestCase
     protected function setUp(): void
     {
         parent::setUp();
-        Carbon::setTestNow(Carbon::now());
         $this->handler = new CreateLeadCommandHandler(
             $this->repository(),
             $this->eventBus()
@@ -37,7 +36,5 @@ class CreateLeadCommandHandlerTest extends LeadTestCase
         $this->shouldPublishEvent($event);
 
         ($this->handler)(new CreateLeadCommand($name, $email));
-
-        $this->assertTrue(true); // No exception thrown
     }
 }

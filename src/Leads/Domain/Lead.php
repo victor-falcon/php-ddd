@@ -68,7 +68,7 @@ final class Lead extends AggregateRoot
             'id' => $this->id()->value(),
             'name' => $this->name()->value(),
             'email' => $this->email()->value(),
-            'createdAt' => $this->createdAt()->date(),
+            'createdAt' => Utils::dateToString($this->createdAt()->date()),
         ];
     }
 
@@ -78,7 +78,7 @@ final class Lead extends AggregateRoot
             new LeadUuid($parameters['id']),
             new LeadName($parameters['name']),
             new LeadEmail($parameters['email']),
-            LeadCreatedAt::formString($parameters['createdAt'])
+            new LeadCreatedAt(Utils::stringToDate($parameters['createdAt']))
         );
     }
 }

@@ -5,7 +5,7 @@
                           https://www.doctrine-project.org/schemas/orm/doctrine-mapping.xsd">
 
     <embeddable name="Cal\EventLogger\Domain\ValueObject\EventLogAggregateId">
-        <field name="value" type="integer" column="aggregate_id"/>
+        <field name="value" type="string" column="aggregate_id"/>
     </embeddable>
 
 </doctrine-mapping>

@@ -44,7 +44,9 @@ abstract class LeadTestCase extends TestCase
 
     protected function shouldSave(Lead $lead): void
     {
-        $this->repository->method('save')
+        $this->repository
+            ->expects($this->once())
+            ->method('save')
             ->with($this->callback(function (Lead $a) use ($lead) {
                 return $this->areSimilar($a->toArray(), $lead->toArray());
             }));
@@ -58,7 +60,7 @@ abstract class LeadTestCase extends TestCase
             }));
     }
 
-    private function areSimilar(array $a, array $b): bool
+    protected function areSimilar(array $a, array $b): bool
     {
         return $a['name'] === $b['name']
             && $a['email'] === $b['email'];

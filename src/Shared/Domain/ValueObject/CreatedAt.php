@@ -20,11 +20,6 @@ class CreatedAt
         $this->date = $date ?? Carbon::now();
     }
 
-    public static function formString(string $date): self
-    {
-        return new self(Utils::stringToDate($date));
-    }
-
     public function date(): Carbon
     {
         return $this->date;

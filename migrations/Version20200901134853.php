@@ -18,7 +18,7 @@ final class Version20200901134853 extends AbstractMigration
     {
         $this->addSql('CREATE TABLE events_log (
             id VARCHAR(36) NOT NULL, 
-            aggregate_id INT NOT NULL, 
+            aggregate_id VARCHAR(255) NOT NULL, 
             name VARCHAR(255) NOT NULL, 
             body LONGTEXT NOT NULL, 
             created_at DATETIME NOT NULL, PRIMARY KEY(id)

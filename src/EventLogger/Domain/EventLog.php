@@ -10,6 +10,9 @@ use Cal\EventLogger\Domain\ValueObject\EventLogCreatedAt;
 use Cal\EventLogger\Domain\ValueObject\EventLogName;
 use Cal\EventLogger\Domain\ValueObject\EventLogUuid;
 use Cal\Shared\Domain\Aggregate\AggregateRoot;
+use Cal\Shared\Domain\Bus\Event\Event;
+use Cal\Shared\Domain\Utils;
+use Cal\Shared\Domain\ValueObject\Uuid;
 
 final class EventLog extends AggregateRoot
 {
@@ -31,6 +34,16 @@ final class EventLog extends AggregateRoot
         $this->name = $name;
         $this->body = $body;
         $this->createdAt = $createdAt ?? new EventLogCreatedAt();
+    }
+
+    public static function createFromEvent(Event $event): self
+    {
+        return new self(
+            new EventLogUuid(Uuid::generate()),
+            new EventLogAggregateId($event->aggregateId()),
+            new EventLogName($event->eventId()),
+            new EventLogBody($event->toPrimitives())
+        );
     }
 
     public function id(): EventLogUuid
@@ -64,7 +77,7 @@ final class EventLog extends AggregateRoot
             'id' => $this->id()->value(),
             'aggregateId' => $this->aggregateId()->value(),
             'name' => $this->name()->value(),
-            'body' => $this->body()->value(),
+            'body' => $this->body()->asArray(),
             'createdAt' => $this->createdAt()->value(),
         ];
     }
@@ -76,7 +89,7 @@ final class EventLog extends AggregateRoot
             new EventLogAggregateId($parameters['aggregateId']),
             new EventLogName($parameters['name']),
             new EventLogBody($parameters['body']),
-            EventLogCreatedAt::formString($parameters['createdAt'])
+            new EventLogCreatedAt(Utils::stringToDate($parameters['createdAt']))
         );
     }
 }

@@ -4,8 +4,8 @@ declare(strict_types=1);
 
 namespace Cal\EventLogger\Domain\ValueObject;
 
-use Cal\Shared\Domain\ValueObject\IntValueObject;
+use Cal\Shared\Domain\ValueObject\StringValueObject;
 
-final class EventLogAggregateId extends IntValueObject
+final class EventLogAggregateId extends StringValueObject
 {
 }
