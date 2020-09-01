@@ -22,7 +22,7 @@ class LeadCreatedEvent extends Event
 
     public static function eventName(): string
     {
-        return 'lead.created';
+        return 'leads.domain.lead.v1.create';
     }
 
     public function toPrimitives(): array
@@ -38,7 +38,6 @@ class LeadCreatedEvent extends Event
     ): Event {
         return new self(
             Lead::fromArray($body),
-            $aggregateId,
             $eventId,
             $occurredOn
         );
