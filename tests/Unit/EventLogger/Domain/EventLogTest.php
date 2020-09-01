@@ -10,7 +10,7 @@ use Cal\EventLogger\Domain\EventLog;
 
 class EventLogTest extends EventLoggerTestCase
 {
-    public function test_it_is_created_from_an_array()
+    public function test_it_is_created_from_an_array(): void
     {
         $event = EventLogMother::random();
         $fromArray = EventLog::fromArray($event->toArray());

@@ -20,14 +20,14 @@ class LeadCreatedEventTest extends LeadTestCase
         Carbon::setTestNow();
     }
 
-    public function test_event_name()
+    public function test_event_name(): void
     {
         $event = $this->getEvent();
 
         $this->assertEquals('leads.domain.lead.v1.create', $event->eventName());
     }
 
-    public function test_it_returns_expected_primitive()
+    public function test_it_returns_expected_primitive(): void
     {
         $lead = LeadMother::random();
         $event = $this->getEvent($lead);
@@ -35,7 +35,7 @@ class LeadCreatedEventTest extends LeadTestCase
         $this->assertEquals($lead->toArray(), $event->toPrimitives());
     }
 
-    public function test_it_is_created_as_expected_from_primitive()
+    public function test_it_is_created_as_expected_from_primitive(): void
     {
         $lead = LeadMother::random();
         $event = $this->getEvent($lead);

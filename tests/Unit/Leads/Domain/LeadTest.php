@@ -10,7 +10,7 @@ use Cal\Leads\Domain\Lead;
 
 class LeadTest extends LeadTestCase
 {
-    public function test_it_is_created_from_an_array()
+    public function test_it_is_created_from_an_array(): void
     {
         $lead = LeadMother::random();
         $fromArray = Lead::fromArray($lead->toArray());

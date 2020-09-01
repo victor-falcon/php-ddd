@@ -21,7 +21,7 @@ class EventLogEventSubscriberTest extends EventLoggerTestCase
         $this->eventSubscriber = new EventLogEventSubscriber($this->repository());
     }
 
-    public function test_it_save_an_event()
+    public function test_it_save_an_event(): void
     {
         $event = new LeadCreatedEvent(LeadMother::random());
 
@@ -30,7 +30,7 @@ class EventLogEventSubscriberTest extends EventLoggerTestCase
         ($this->eventSubscriber)($event);
     }
 
-    public function test_it_is_subscribed_to_expected_events()
+    public function test_it_is_subscribed_to_expected_events(): void
     {
         $this->assertEquals([Event::class], $this->eventSubscriber->subscribedTo());
     }
