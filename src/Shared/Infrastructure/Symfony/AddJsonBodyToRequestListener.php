@@ -4,6 +4,7 @@ declare(strict_types=1);
 
 namespace Cal\Shared\Infrastructure\Symfony;
 
+use Cal\Shared\Domain\Utils;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpKernel\Event\RequestEvent;
@@ -20,7 +21,7 @@ final class AddJsonBodyToRequestListener
             return;
         }
 
-        $jsonData = json_decode($requestContents, true);
+        $jsonData = Utils::jsonDecode($requestContents);
         if (! $jsonData) {
             throw new HttpException(Response::HTTP_BAD_REQUEST, 'Invalid json data');
         }

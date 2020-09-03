@@ -16,6 +16,16 @@ final class Utils
             strtolower(preg_replace('/([^A-Z\s])([A-Z])/', '$1_$2', $text));
     }
 
+    public static function jsonEncode(array $data): string
+    {
+        return json_encode($data);
+    }
+
+    public static function jsonDecode(string $data): array
+    {
+        return json_decode($data, true);
+    }
+    
     public static function dateToString(DateTimeInterface $date): string
     {
         return $date->format(DateTimeInterface::ATOM);

@@ -5,6 +5,7 @@ declare(strict_types=1);
 namespace Cal\Shared\Domain\ValueObject;
 
 use Cal\Shared\Domain\Exception\InvalidJsonException;
+use Cal\Shared\Domain\Utils;
 
 class JsonValue
 {
@@ -12,7 +13,7 @@ class JsonValue
 
     public function __construct(array $value)
     {
-        $this->value = json_encode($value);
+        $this->value = Utils::jsonEncode($value);
     }
 
     public function value(): string
@@ -22,12 +23,12 @@ class JsonValue
 
     public function asArray(): array
     {
-        return json_decode($this->value, true);
+        return Utils::jsonDecode($this->value);
     }
 
     private function throwIsInvalid(string $value)
     {
-        $valid = (json_decode($value, true) == null) ? false : true;
+        $valid = (Utils::jsonDecode($value) == null) ? false : true;
 
         if (false === $valid) {
             throw new InvalidJsonException($value);
