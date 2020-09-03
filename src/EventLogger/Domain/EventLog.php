@@ -39,9 +39,9 @@ final class EventLog extends AggregateRoot
     public static function createFromEvent(Event $event): self
     {
         return new self(
-            new EventLogUuid(Uuid::generate()),
+            new EventLogUuid($event->eventId()),
             new EventLogAggregateId($event->aggregateId()),
-            new EventLogName($event->eventId()),
+            new EventLogName($event::eventName()),
             new EventLogBody($event->toPrimitives())
         );
     }
