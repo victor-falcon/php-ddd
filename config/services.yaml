@@ -55,4 +55,4 @@ services:
 
     # Interfaces definitions
     # ----------------------
-    Cal\Leads\Repository\LeadRepository: '@Cal\Leads\Infrastructure\Persistence\DoctrineLeadRepository'
+    Cal\Shared\Domain\Bus\Event\EventBus: '@Cal\Shared\Infrastructure\Bus\Event\MySqlDoctrineEventBus'

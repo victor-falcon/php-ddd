@@ -13,7 +13,7 @@ use Symfony\Component\Messenger\Handler\HandlersLocator;
 use Symfony\Component\Messenger\MessageBus;
 use Symfony\Component\Messenger\Middleware\HandleMessageMiddleware;
 
-class InMemorySymfonyEventBus implements EventBus
+final class InMemorySymfonyEventBus implements EventBus
 {
     private MessageBus $bus;
 

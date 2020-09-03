@@ -31,6 +31,11 @@ final class Utils
         return $date->format(DateTimeInterface::ATOM);
     }
 
+    public static function dateToDatabaseString(DateTimeInterface $date): string
+    {
+        return $date->format('Y-m-d H:i:s');
+    }
+
     public static function stringToDate(string $date): Carbon
     {
         return Carbon::createFromFormat(DateTimeInterface::ATOM, $date);
