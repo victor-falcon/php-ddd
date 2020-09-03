@@ -15,14 +15,14 @@ services:
             - '../app/Kernel.php'
             - '../app/Tests/'
 
-    App\Controller\:
-        resource: '../app/Controller/'
-        tags: ['controller.service_arguments']
-
     Cal\:
         resource: '../src/'
         exclude:
             - '../src/Shared/Domain/helpers.php'
+
+    App\Controller\:
+        resource: '../app/Controller/'
+        tags: [ 'controller.service_arguments' ]
 
     # Middleware
     # ----------

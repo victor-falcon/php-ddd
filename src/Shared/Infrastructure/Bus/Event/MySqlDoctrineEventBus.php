@@ -8,7 +8,6 @@ use Cal\Shared\Domain\Bus\Event\Event;
 use Cal\Shared\Domain\Bus\Event\EventBus;
 use Cal\Shared\Domain\Utils;
 use Doctrine\DBAL\Connection;
-use Doctrine\ORM\EntityManager;
 use Doctrine\ORM\EntityManagerInterface;
 use function Lambdish\Phunctional\each;
 
@@ -37,7 +36,7 @@ final class MySqlDoctrineEventBus implements EventBus
             $ocurredOn = $this->connection->quote(Utils::dateToDatabaseString($date));
 
             $this->connection->executeUpdate(
-                "insert into events (id, aggregate_id, name,  body, ocurred_on)" .
+                'insert into events (id, aggregate_id, name,  body, ocurred_on)'.
                 "values ($id, $aggregateId, $name, $body, $ocurredOn);"
             );
         };

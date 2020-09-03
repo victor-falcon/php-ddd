@@ -26,7 +26,7 @@ class MySqlDoctrineEventBusTest extends InfrastructureTestCase
         $this->eventBus = new MySqlDoctrineEventBus($entityManager);
     }
 
-    public function test_it_store_events_in_database()
+    public function test_it_store_events_in_database(): void
     {
         $events = [
             new LeadCreatedEvent(LeadMother::random()),
@@ -34,7 +34,7 @@ class MySqlDoctrineEventBusTest extends InfrastructureTestCase
 
         $this->eventBus->publish(...$events);
 
-        $count = $this->connection->executeQuery("select count(*) as total from events")
+        $count = $this->connection->executeQuery('select count(*) as total from events')
             ->fetchColumn(0);
         $this->assertEquals(1, $count);
     }

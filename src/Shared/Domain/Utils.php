@@ -25,7 +25,7 @@ final class Utils
     {
         return json_decode($data, true);
     }
-    
+
     public static function dateToString(DateTimeInterface $date): string
     {
         return $date->format(DateTimeInterface::ATOM);

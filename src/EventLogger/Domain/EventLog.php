@@ -12,7 +12,6 @@ use Cal\EventLogger\Domain\ValueObject\EventLogUuid;
 use Cal\Shared\Domain\Aggregate\AggregateRoot;
 use Cal\Shared\Domain\Bus\Event\Event;
 use Cal\Shared\Domain\Utils;
-use Cal\Shared\Domain\ValueObject\Uuid;
 
 final class EventLog extends AggregateRoot
 {
