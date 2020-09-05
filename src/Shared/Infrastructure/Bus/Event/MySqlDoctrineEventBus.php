@@ -22,10 +22,10 @@ final class MySqlDoctrineEventBus implements EventBus
 
     public function publish(Event ...$events): void
     {
-        each($this->publishEvent(), $events);
+        each($this->execute(), $events);
     }
 
-    private function publishEvent(): callable
+    private function execute(): callable
     {
         return function (Event $event): void {
             $id = $this->connection->quote($event->eventId());
@@ -36,7 +36,7 @@ final class MySqlDoctrineEventBus implements EventBus
             $ocurredOn = $this->connection->quote(Utils::dateToDatabaseString($date));
 
             $this->connection->executeUpdate(
-                'insert into events (id, aggregate_id, name,  body, ocurred_on)'.
+                'insert into events (id, aggregate_id, name,  body, created_at)'.
                 "values ($id, $aggregateId, $name, $body, $ocurredOn);"
             );
         };
