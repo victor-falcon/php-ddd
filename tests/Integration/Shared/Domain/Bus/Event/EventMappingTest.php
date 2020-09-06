@@ -29,7 +29,7 @@ class EventMappingTest extends InfrastructureTestCase
         $this->assertEquals(LeadCreatedEvent::class, $result);
     }
 
-    public function test_it_throws_expected_exception()
+    public function test_it_throws_expected_exception(): void
     {
         $this->expectException(EventMappingException::class);
         $this->expectDeprecationMessage('No event class mapped for <random>');

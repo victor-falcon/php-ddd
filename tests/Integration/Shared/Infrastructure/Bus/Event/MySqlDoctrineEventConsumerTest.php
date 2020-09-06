@@ -37,7 +37,7 @@ class MySqlDoctrineEventConsumerTest extends InfrastructureTestCase
         $this->eventConsumer = $consumer;
     }
 
-    public function test_it_get_expected_events_to_consume()
+    public function test_it_get_expected_events_to_consume(): void
     {
         $this->eventBus->publish(new LeadCreatedEvent(LeadMother::random()));
 
@@ -46,7 +46,7 @@ class MySqlDoctrineEventConsumerTest extends InfrastructureTestCase
         $this->assertInstanceOf(LeadCreatedEvent::class, $events[0]);
     }
 
-    public function test_it_consume_events()
+    public function test_it_consume_events(): void
     {
         $lead = LeadMother::random();
         $event = new LeadCreatedEvent($lead);
