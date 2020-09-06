@@ -10,7 +10,7 @@ use Symfony\Component\Console\Input\InputInterface;
 use Symfony\Component\Console\Output\OutputInterface;
 use Symfony\Component\Console\Style\SymfonyStyle;
 
-class ConsumeMySqlDomainEventsCommand extends Command
+final class ConsumeMySqlDomainEventsCommand extends Command
 {
     const QUANTITY_ARGUMENT = 'quantity';
     protected static $defaultName = 'cal:domain-events:mysql:consume';

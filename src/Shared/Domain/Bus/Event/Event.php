@@ -17,18 +17,18 @@ abstract class Event
     public function __construct(
         string $aggregateId,
         string $eventId = null,
-        string $occurredOn = null
+        string $createdAt = null
     ) {
         $this->aggregateId = $aggregateId;
         $this->eventId = $eventId ?? Uuid::generate();
-        $this->occurredOn = $occurredOn ?? Utils::dateToString(Carbon::now());
+        $this->occurredOn = $createdAt ?? Utils::dateToString(Carbon::now());
     }
 
     abstract public static function fromPrimitives(
         string $aggregateId,
         array $body,
         string $eventId,
-        string $occurredOn
+        string $createdAt
     ): self;
 
     abstract public static function eventName(): string;

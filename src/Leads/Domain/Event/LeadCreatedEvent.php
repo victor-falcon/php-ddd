@@ -14,10 +14,10 @@ class LeadCreatedEvent extends Event
     public function __construct(
         Lead $lead,
         string $eventId = null,
-        string $occurredOn = null
+        string $createdAt = null
     ) {
         $this->lead = $lead;
-        parent::__construct($lead->id()->value(), $eventId, $occurredOn);
+        parent::__construct($lead->id()->value(), $eventId, $createdAt);
     }
 
     public static function eventName(): string
@@ -34,12 +34,12 @@ class LeadCreatedEvent extends Event
         string $aggregateId,
         array $body,
         string $eventId,
-        string $occurredOn
+        string $createdAt
     ): Event {
         return new self(
             Lead::fromArray($body),
             $eventId,
-            $occurredOn
+            $createdAt
         );
     }
 }

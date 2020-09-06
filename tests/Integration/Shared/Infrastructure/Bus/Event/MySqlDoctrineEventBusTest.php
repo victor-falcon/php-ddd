@@ -34,7 +34,8 @@ class MySqlDoctrineEventBusTest extends InfrastructureTestCase
 
         $this->eventBus->publish(...$events);
 
-        $count = $this->connection->executeQuery('select count(*) as total from events')
+        $count = $this->connection
+            ->executeQuery('select count(*) as total from events')
             ->fetchColumn(0);
         $this->assertEquals(1, $count);
     }

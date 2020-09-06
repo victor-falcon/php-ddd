@@ -56,6 +56,11 @@ services:
     Cal\Shared\Infrastructure\Bus\Event\MySqlDoctrineEventConsumer:
         arguments: [ !tagged cal.event_subscriber ]
 
+    Cal\Shared\Domain\Bus\Event\EventMapping:
+        arguments:
+            $mapping:
+                - Cal\Leads\Domain\Event\LeadCreatedEvent
+
     # Interfaces definitions
     # ----------------------
     Cal\Shared\Domain\Bus\Event\EventBus: '@Cal\Shared\Infrastructure\Bus\Event\MySqlDoctrineEventBus'
