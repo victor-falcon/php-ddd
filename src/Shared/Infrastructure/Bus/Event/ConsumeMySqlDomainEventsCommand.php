@@ -14,9 +14,6 @@ class ConsumeMySqlDomainEventsCommand extends Command
 {
     const QUANTITY_ARGUMENT = 'quantity';
     protected static $defaultName = 'cal:domain-events:mysql:consume';
-    /**
-     * @var MySqlDoctrineEventConsumer
-     */
     private MySqlDoctrineEventConsumer $consumer;
 
     public function __construct(MySqlDoctrineEventConsumer $consumer)

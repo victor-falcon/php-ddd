@@ -53,6 +53,9 @@ services:
     Cal\Shared\Infrastructure\Bus\Event\InMemorySymfonyEventBus:
         arguments: [ !tagged cal.event_subscriber ]
 
+    Cal\Shared\Infrastructure\Bus\Event\MySqlDoctrineEventConsumer:
+        arguments: [ !tagged cal.event_subscriber ]
+
     # Interfaces definitions
     # ----------------------
     Cal\Shared\Domain\Bus\Event\EventBus: '@Cal\Shared\Infrastructure\Bus\Event\MySqlDoctrineEventBus'
