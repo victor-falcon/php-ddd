@@ -38,5 +38,11 @@
             "email": "victoor89@gmail.com"
         }
         """
-        Then the response content should be empty
+        Then the response content should be
+        """
+        {
+            "error": true,
+            "message": "Duplicated lead"
+        }
+        """
         And the response status code should be 400

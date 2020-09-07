@@ -17,6 +17,9 @@ start: ## Start and run project
 stop: ## Stop project
 	docker-compose down
 
+install: ## Install dependencies
+	docker exec $(docker-container) composer install
+
 #
 # 🔬 Testing
 #

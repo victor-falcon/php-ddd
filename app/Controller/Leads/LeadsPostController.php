@@ -7,6 +7,7 @@ namespace App\Controller\Leads;
 use Cal\Leads\Command\CreateLeadCommand;
 use Cal\Leads\Domain\Exception\DuplicatedLeadException;
 use Cal\Shared\Domain\Bus\Command\CommandBus;
+use Cal\Shared\Infrastructure\Http\ErrorResponse;
 use Symfony\Component\HttpFoundation\Request;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -29,7 +30,7 @@ class LeadsPostController
 
             return new Response(null, Response::HTTP_CREATED);
         } catch (DuplicatedLeadException $e) {
-            return new Response(null, Response::HTTP_BAD_REQUEST);
+            return new ErrorResponse($e, Response::HTTP_BAD_REQUEST);
         }
     }
 }
