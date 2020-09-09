@@ -2,7 +2,7 @@
 
 ## 📁 Proyect structure
 
-Our code it's stored in the `src` folder. one for leads and another for event logger.
+Our code, it's stored in the `src` folder. One for leads and another for event logging.
 
 ```bash
 src
@@ -20,7 +20,13 @@ src
     └── Infrastructure
 ```
 
-We have two domains: one for leads and another for event logger. Also we have a `Shared` folder for some shared code between al domains.
+We have two domains: one for leads and another for event logging. Also, we have a `Shared` folder for some shared code between al domains.
+
+### CQRS
+
+We are implementing CQRS in our controllers in order to separate queries, commands, and most important, our code from symfony or other infrastructure code. We have a `InMemorySymfonyCommandBus.php` and a `InMemorySymfonyQueryBus.php` to dispatch any request we implement.
+
+We also have a EventBus with two possible implementations: We have `InMemorySymfonyEventBus.php` and a `MySqlDoctrineEventBus.php` to dispatch events, store them in database and executed them assyncronous with a command.
 
 ## 👷 CI
 
