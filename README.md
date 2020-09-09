@@ -1,23 +1,33 @@
-# 📡 Calendapp Api
+# 📡 PHP DDD Api
 
-## 🧪 Testing
+## 👷 CI
 
-We have two test suits: one for unit testing and another to feature test with datebase integration and no mocks. You can run each testsuite together or isolated with:
+We use GitHub Workflow to test our project and check style after every commit. If you go to the `Actions` tab you can see each execution. Also, you will receive an email if you commit something and don't pass through all our checks.
+
+If you want yo can execute each of this tests with the following commands in this doc.
+
+### 🧪 Testing
+
+We have two testing suits with PHP Unit, one for unit testing an another for integration. You can execute any of them with:
 
 ```bash
-# PHP Unit suits or all
-vendor/bin/phpunit --testsuite Unit
-vendor/bin/phpunit --testsuite Integration
-vendor/bin/phpunit
-
-# Behat feature tests
-vendor/bin/behat
+make test/unit                  # Unit testing
+make test/integration           # Integration testing
 ```
 
-### Find possible errors
-You can use PHP Stan to check to find possible errors in you code without actually running it. It's move PHP closer to a compiled language so you can avoid some errors without throwing them. To run PHPStan you just need to `vendor/bin/phpstan analyse -c phpstan.neon`.
+Also we use behat to test features. You can execute this tests with:
 
-### Coding style
-Also you can check you codding style usign PHP Fixer to check if you have something wrong. With `vendor/bin/php-cs-fixer fix --dry-run --diff --config .php_cs.php` you can see a diff without making any change.
+```bash
+make test/functional            # Functional testing
+```
+If you want to execute all you can simply execute `make test/all`.
 
-To fix all files automatically you must use `vendor/bin/php-cs-fixer fix --config .php_cs.php`.
+### 💅 Code style and error checker
+
+To ensure that all the code write in this project follow the same style guide and it's free of error we have two types of code checks:
+
+```bash
+make style/code-style           # Code style
+make style/static-analysis      # Static error checker
+make style/all                  # Run both
+```
