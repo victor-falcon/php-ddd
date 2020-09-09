@@ -1,5 +1,27 @@
 # 📡 PHP DDD Api
 
+## 📁 Proyect structure
+
+Our code it's stored in the `src` folder. one for leads and another for event logger.
+
+```bash
+src
+├── EventLogger
+│   ├── Domain
+│   ├── Infrastructure
+│   └── Repository
+├── Leads
+│   ├── Command
+│   ├── Domain
+│   ├── Infrastructure
+│   └── Repository
+└── Shared
+    ├── Domain
+    └── Infrastructure
+```
+
+We have two domains: one for leads and another for event logger. Also we have a `Shared` folder for some shared code between al domains.
+
 ## 👷 CI
 
 We use GitHub Workflow to test our project and check style after every commit. If you go to the `Actions` tab you can see each execution. Also, you will receive an email if you commit something and don't pass through all our checks.
