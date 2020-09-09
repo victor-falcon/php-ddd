@@ -13,6 +13,7 @@
         "doctrine/orm": "^2.7",
         "fzaninotto/faker": "^1.9",
         "lambdish/phunctional": "^2.0",
+        "nelmio/cors-bundle": "^2.1",
         "nesbot/carbon": "^2.39",
         "ramsey/uuid": "^4.1",
         "symfony/console": "5.1.*",
