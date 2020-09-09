@@ -28,6 +28,10 @@ We are implementing CQRS in our controllers in order to separate queries, comman
 
 We also have a EventBus with two possible implementations: We have `InMemorySymfonyEventBus.php` and a `MySqlDoctrineEventBus.php` to dispatch events, store them in database and executed them assyncronous with a command.
 
+## 🐘 Execute and run project
+
+With `make start` you can run dockers containers and you will find the project into `http://localhost:8000`. When you finish working you can just `make stop` to stop containers.
+
 ## 👷 CI
 
 We use GitHub Workflow to test our project and check style after every commit. If you go to the `Actions` tab you can see each execution. Also, you will receive an email if you commit something and don't pass through all our checks.
